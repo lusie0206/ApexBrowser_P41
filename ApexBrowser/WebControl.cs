@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,22 @@ namespace ApexBrowser
         {
             InitializeWebView();
             webView2Control.EnsureCoreWebView2Async();
+
+            WebControlStorage.Instance.ActiveWebControlChanged += Instance_ActiveWebControlChanged;
+        }
+
+        private void Instance_ActiveWebControlChanged(object? sender, EventArgs e)
+        {
+            bool equals = false;
+
+            if (WebControlStorage.Instance.GetActualWebControl() is IWebControl webControl)
+            {
+                equals = webControl == this;
+            }
+
+            labelHeader.Font = equals
+                ? new System.Drawing.Font(labelHeader.Font, labelHeader.Font.Style | FontStyle.Bold)
+                : new System.Drawing.Font(labelHeader.Font, labelHeader.Font.Style & ~FontStyle.Bold);
         }
 
         private void InitializeWebView()

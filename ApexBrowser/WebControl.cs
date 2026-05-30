@@ -21,7 +21,8 @@ namespace ApexBrowser
 
         private void WebControl_Load(object sender, EventArgs e)
         {
-
+            InitializeWebView();
+            webView2Control.EnsureCoreWebView2Async();
         }
 
         private void InitializeWebView()

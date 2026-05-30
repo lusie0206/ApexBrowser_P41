@@ -35,6 +35,11 @@
             textBoxUrl = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             button5 = new Button();
+            textBoxName = new TextBox();
+            textBoxPrice = new TextBox();
+            buttonSave = new Button();
+            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // buttonBack
@@ -91,7 +96,7 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Location = new Point(12, 63);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(991, 441);
+            flowLayoutPanel1.Size = new Size(991, 315);
             flowLayoutPanel1.TabIndex = 5;
             // 
             // button5
@@ -104,11 +109,58 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(70, 444);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(708, 27);
+            textBoxName.TabIndex = 7;
+            // 
+            // textBoxPrice
+            // 
+            textBoxPrice.Location = new Point(70, 476);
+            textBoxPrice.Name = "textBoxPrice";
+            textBoxPrice.Size = new Size(566, 27);
+            textBoxPrice.TabIndex = 8;
+            // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(642, 476);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(136, 29);
+            buttonSave.TabIndex = 9;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 447);
+            label1.Name = "label1";
+            label1.Size = new Size(52, 20);
+            label1.TabIndex = 10;
+            label1.Text = "Name:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 480);
+            label2.Name = "label2";
+            label2.Size = new Size(44, 20);
+            label2.TabIndex = 11;
+            label2.Text = "Price:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1015, 516);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(buttonSave);
+            Controls.Add(textBoxPrice);
+            Controls.Add(textBoxName);
             Controls.Add(button5);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(textBoxUrl);
@@ -132,5 +184,10 @@
         private TextBox textBoxUrl;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button5;
+        private TextBox textBoxName;
+        private TextBox textBoxPrice;
+        private Button buttonSave;
+        private Label label1;
+        private Label label2;
     }
 }

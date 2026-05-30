@@ -53,7 +53,7 @@ namespace ApexBrowser
                 buttonReload.Enabled = isReloadActive;
             }
         }
-        
+
         private void buttonBack_Click(object sender, EventArgs e)
         {
             GetWebControl()?.GoBack();
@@ -88,6 +88,18 @@ namespace ApexBrowser
             int width = (flowLayoutPanel1.Width - 20) / 2;
             int height = (int)(width * 0.5625);
             flowLayoutPanel1.Controls.Add(new WebControl(width, height));
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            string name = textBoxName.Text;
+            string priceAsText = textBoxPrice.Text;
+            double price = 0.0;
+            if (!string.IsNullOrEmpty(name) && double.TryParse(priceAsText, out price))
+            {
+                // Save as object into file or DB.
+            }
+            // convert priceAsText to double (keep coma OR dot depending on culture)
         }
     }
 }

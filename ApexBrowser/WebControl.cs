@@ -23,6 +23,14 @@ namespace ApexBrowser
             InitializeComponent();
         }
 
+        public WebControl(int width, int height)
+        {
+            InitializeComponent();
+
+            this.Width = width;
+            this.Height = height;
+        }
+
         private void WebControl_Load(object sender, EventArgs e)
         {
             InitializeWebView();

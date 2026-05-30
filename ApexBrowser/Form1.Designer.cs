@@ -87,6 +87,7 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Location = new Point(12, 63);
             flowLayoutPanel1.Name = "flowLayoutPanel1";

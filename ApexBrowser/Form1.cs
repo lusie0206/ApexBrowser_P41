@@ -54,11 +54,6 @@ namespace ApexBrowser
             }
         }
         
-        private void button5_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Controls.Add(new WebControl());
-        }
-
         private void buttonBack_Click(object sender, EventArgs e)
         {
             GetWebControl()?.GoBack();
@@ -87,6 +82,12 @@ namespace ApexBrowser
             }
         }
 
-        
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // 16x9
+            int width = (flowLayoutPanel1.Width - 20) / 2;
+            int height = (int)(width * 0.5625);
+            flowLayoutPanel1.Controls.Add(new WebControl(width, height));
+        }
     }
 }

@@ -36,11 +36,12 @@
             // webView2Control
             // 
             webView2Control.AllowExternalDrop = true;
+            webView2Control.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             webView2Control.CreationProperties = null;
             webView2Control.DefaultBackgroundColor = Color.White;
             webView2Control.Location = new Point(0, 36);
             webView2Control.Name = "webView2Control";
-            webView2Control.Size = new Size(448, 247);
+            webView2Control.Size = new Size(454, 247);
             webView2Control.TabIndex = 0;
             webView2Control.ZoomFactor = 1D;
             // 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ApexBrowser.Interfaces;
+using Microsoft.Web.WebView2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ApexBrowser
 {
-    public partial class WebControl : UserControl
+    public partial class WebControl : UserControl, IWebControl
     {
         private const string startupUrl = "https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH";
 
@@ -42,12 +45,11 @@ namespace ApexBrowser
                                 MessageBox.Show($"Page loading error {e2.WebErrorStatus}");
                             }
 
-                            //UpdateNavigationButtons();
-                            //UpdateNavigationUrl();
+                            WebControlStorage.Instance.NotifyNavigationCompleted();
                         };
 
                         // Make naviagtion
-                        MakeNavigation(startupUrl);
+                        Navigate(startupUrl);
                     }
                     else
                     {
@@ -57,31 +59,45 @@ namespace ApexBrowser
             }
         }
 
-        private string GetCurrentUri() => webView2Control.Source?.AbsoluteUri ?? string.Empty;
-
-        private void MakeNavigation(string url)
+        private void WebControl_Click(object sender, EventArgs e)
         {
-            webView2Control.Source = new Uri(url);
+            WebControlStorage.Instance.SetActiveWebControl(this as IWebControl);
         }
 
-        private void GoBack()
+        #region IWebControl
+
+        public void GoBack()
         {
-            //prev
             webView2Control.GoBack();
         }
 
-        private void GoForward()
+        public void GoForward()
         {
-            //next
             webView2Control.GoForward();
         }
 
-        private void Reload()
+        public void Reload()
         {
-            //reload
             webView2Control.Reload();
         }
 
+        public void Navigate(string query)
+        {
+            if (!string.IsNullOrEmpty(query))
+            {
+                if (!query.StartsWith("http://") && !query.StartsWith("https://"))
+                {
+                    query = $"https://www.google.com/search?q={Uri.EscapeDataString(query)}";
+                }
+                
+                webView2Control.Source = new Uri(query);
+            }
+        }
+
+        public string GetCurrentUrl() => webView2Control.Source?.AbsoluteUri ?? string.Empty;
+
+        public WebView2 GetWebView2Instance() => webView2Control;
+        #endregion
     }
 
 }

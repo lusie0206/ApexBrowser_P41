@@ -62,6 +62,7 @@
             Name = "WebControl";
             Size = new Size(454, 286);
             Load += WebControl_Load;
+            Click += WebControl_Click;
             ((System.ComponentModel.ISupportInitialize)webView2Control).EndInit();
             ResumeLayout(false);
             PerformLayout();
